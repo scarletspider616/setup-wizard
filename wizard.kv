@@ -164,14 +164,7 @@ ScreenManager:
 		BoxLayout:
 			orientation: 'horizontal'
 			Widget:
-			TextInput:
-				id: server_addr
-				font_size: 21
-				size_hint_x: None 
-				width: 300
-				size_hint_y: None 
-				height: 45
-				text: 'input here'
+			ProgressBar:
 			Widget:
 		Widget:
 		BoxLayout:
@@ -186,7 +179,7 @@ ScreenManager:
 		            root.manager.transition.direction = 'right'
 		            root.manager.current = 'input_screen'
             Button:
-            	text: 'Finish'
+            	text: 'Next'
 				size_hint_y: None
 	            font_size: 30
 	            height: 50

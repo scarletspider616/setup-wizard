@@ -10,6 +10,7 @@
 from kivy.uix.screenmanager import Screen
 from kivy.graphics.vertex_instructions import Line
 from kivy.graphics.context_instructions import Color
+from kivy.uix.progressbar import ProgressBar
 
 
 class WelcomeScreen(Screen):
@@ -32,6 +33,8 @@ class InputScreen(Screen):
 
 
 class ProgressScreen(Screen):
+	pb = ProgressBar(max=1000)
+	pb.value = 500
 	def on_back(self):
 		pass
 
