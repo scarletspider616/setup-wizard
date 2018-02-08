@@ -72,4 +72,6 @@ accessed on February 7, 2018
 
 Code snippets from Kivy Documentation were used. 
 Here are specific links and the dates they were accessed: 
-https://kivy.org/docs/api-kivy.uix.screenmanager.html (Feb. 8, 2017)
+
+https://kivy.org/docs/api-kivy.uix.screenmanager.html (Feb. 8, 2018)
+https://kivy.org/docs/_modules/kivy/uix/progressbar.html (Feb. 8, 2018)
