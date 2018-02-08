@@ -22,6 +22,49 @@ for general setup wizard screens, transitions between these screens
 and a general/familiar visual setup for a setup wizard. 
 
 
+Five Screens have been provided: 
+	- WelcomeScreen
+	- InputScreen
+	- TextScreen
+	- ProgressScreen
+	- FinalScreen
+
+These screens should be inherited by the screens you wish 
+to implement in your setup wizard:
+eg: 
+def MyWelcomeScreen(WelcomeScreen):
+	...
+
+For simple wizards, you can also simply modify these screen classes to your
+liking. 
+
+I have provided a 
+Wizard.py to get your wizard running if you don't want to mess around with 
+the implemented screen manager or other apps. I recommend editing this
+file or indeed replacing it entirely. Just remember to include the following in the 
+replacement:
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import ScreenManager
+from kivy.lang import Builder
+
+from screens import *
+
+presentation = Builder.load_file("wizard.kv")
+
+
+Each Screen has two methods:
+	- on_back():
+	- on_next():
+
+Where pythonic code should be overriden in your inherited class for these methods 
+to complete whatever actions need to be taken when the user clicks either the 
+back or next button. 
+
+Note that there are two exceptions, instead of an "on_back," WelcomeScreen has 
+an on_exit() method, and similarly FinalScreen has an on_exit() method instead
+of an "on_next" method. 
+
+
 Attributions: 
 The visual aspect of this project is based on the kivy documentation: 
 https://kivy.org/docs/guide/widgets.html#adding-widget-background

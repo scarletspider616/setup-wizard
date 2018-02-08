@@ -19,10 +19,11 @@ ScreenManager:
     WelcomeScreen:
     InputScreen:
     ProgressScreen:
-
+    TextScreen
+    FinalScreen
 
 <WelcomeScreen>:
-	name: 'welcome'
+	name: 'welcome_screen'
 	BoxLayout:
 		orientation: 'vertical'
 		Label:
@@ -52,6 +53,45 @@ ScreenManager:
 	            font_size: 30
 	            height: 50
 	            on_press: 
+	            	root.on_next()
+		            root.manager.transition.direction = 'left'
+		            root.manager.current = 'text_screen'
+
+<TextScreen>:
+	name: 'text_screen'
+	BoxLayout:
+		orientation: 'vertical'
+		Label:
+			id: text_screen_title
+			font_size: 45
+			size_hint_y: None
+			height: 100
+			text: 'Notice'
+		Label:
+			id: input_screen_actions
+			font_size: 21
+			size_hint_y: None 
+			height: 45
+			text: root.text_label_text
+		Widget:
+		BoxLayout:
+			orientation: 'horizontal'
+	        Button:
+	            text: 'Back'
+	            size_hint_y: None
+	            font_size: 30
+	            height: 50
+	            on_press:
+	            	root.on_back()
+		            root.manager.transition.direction = 'right'
+		            root.manager.current = 'welcome_screen'
+            Button:
+            	text: 'Next'
+				size_hint_y: None
+	            font_size: 30
+	            height: 50
+	            on_press:
+	            	root.on_next()
 		            root.manager.transition.direction = 'left'
 		            root.manager.current = 'input_screen'
 
@@ -92,19 +132,21 @@ ScreenManager:
 	            font_size: 30
 	            height: 50
 	            on_press:
+	            	root.on_back()
 		            root.manager.transition.direction = 'right'
-		            root.manager.current = 'welcome'
+		            root.manager.current = 'text_screen'
             Button:
             	text: 'Next'
 				size_hint_y: None
 	            font_size: 30
 	            height: 50
 	            on_press:
+	            	root.on_next()
 		            root.manager.transition.direction = 'left'
-		            root.manager.current = 'progress'
+		            root.manager.current = 'progress_screen'
 
 <ProgressScreen>:
-    name: 'progress'
+    name: 'progress_screen'
     BoxLayout:
 		orientation: 'vertical'
 		Label:
@@ -140,6 +182,7 @@ ScreenManager:
 	            font_size: 30
 	            height: 50
 	            on_press: 
+	            	root.on_back()
 		            root.manager.transition.direction = 'right'
 		            root.manager.current = 'input_screen'
             Button:
@@ -147,5 +190,44 @@ ScreenManager:
 				size_hint_y: None
 	            font_size: 30
 	            height: 50
-	            on_press: exit()
+	            on_press: 
+	            	root.on_next()
+	            	root.manager.transition.direction = 'left'
+	            	root.manager.current = 'final_screen'
 
+<FinalScreen>:
+	name: 'final_screen'
+	BoxLayout:
+		orientation: 'vertical'
+		Label:
+			id: final_screen_title
+			font_size: 45
+			size_hint_y: None
+			height: 100
+			text: 'Finished!'
+		Label:
+			id: input_screen_actions
+			font_size: 21
+			size_hint_y: None 
+			height: 45
+			text: 'Setup Complete'
+		Widget:
+		BoxLayout:
+			orientation: 'horizontal'
+	        Button:
+	            text: 'Back'
+	            size_hint_y: None
+	            font_size: 30
+	            height: 50
+	            on_press:
+	            	root.on_back()
+		            root.manager.transition.direction = 'right'
+		            root.manager.current = 'welcome_screen'
+            Button:
+            	text: 'Finish'
+				size_hint_y: None
+	            font_size: 30
+	            height: 50
+	            on_press:
+	            	root.on_exit()
+		            exit()

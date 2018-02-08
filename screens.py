@@ -15,11 +15,43 @@ from kivy.graphics.context_instructions import Color
 class WelcomeScreen(Screen):
 	welcome_label_text = "Click next to get started"
 
-	def on_exit():
+	def on_exit(self):
 		pass # shutdown code will go here eventually 
+
+	def on_next(self):
+		pass
 
 class InputScreen(Screen):
 	input_label_text = "Please enter the following information"
 
+	def on_back(self):
+		pass
+
+	def on_next(self):
+		pass
+
+
 class ProgressScreen(Screen):
-	pass
+	def on_back(self):
+		pass
+
+	def on_next(self):
+		pass
+
+class TextScreen(Screen):
+	text_label_text = "Enter the text to display here"
+
+	def on_back(self):
+		pass
+
+	def on_next(self):
+		pass
+
+class FinalScreen(Screen):
+	final_label_text = "Finsihed!"
+
+	def on_back(self):
+		pass
+
+	def on_exit(self):
+		pass
