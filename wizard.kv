@@ -35,7 +35,7 @@ ScreenManager:
 			id: welcome_label_actions
 			font_size: 35
 			size_hint_y: None 
-			height: 55
+			height: 1000
 			text: root.welcome_label_text
 		Widget:
 		BoxLayout:
@@ -45,13 +45,15 @@ ScreenManager:
 	            size_hint_y: None
 	            font_size: 30
 	            height: 50
-	            on_press: root.shutdown
+	            on_press: root.on_exit
             Button:
             	text: 'Next'
 				size_hint_y: None
 	            font_size: 30
 	            height: 50
-	            on_press: root.manager.current = 'input_screen'
+	            on_press: 
+		            root.manager.transition.direction = 'left'
+		            root.manager.current = 'input_screen'
 
 <InputScreen>:
 	name: 'input_screen'
@@ -89,13 +91,17 @@ ScreenManager:
 	            size_hint_y: None
 	            font_size: 30
 	            height: 50
-	            on_press: root.manager.current = 'welcome'
+	            on_press:
+		            root.manager.transition.direction = 'right'
+		            root.manager.current = 'welcome'
             Button:
             	text: 'Next'
 				size_hint_y: None
 	            font_size: 30
 	            height: 50
-	            on_press: root.manager.current = 'progress'
+	            on_press:
+		            root.manager.transition.direction = 'left'
+		            root.manager.current = 'progress'
 
 <ProgressScreen>:
     name: 'progress'
@@ -133,7 +139,9 @@ ScreenManager:
 	            size_hint_y: None
 	            font_size: 30
 	            height: 50
-	            on_press: root.manager.current = 'input_screen'
+	            on_press: 
+		            root.manager.transition.direction = 'right'
+		            root.manager.current = 'input_screen'
             Button:
             	text: 'Finish'
 				size_hint_y: None
